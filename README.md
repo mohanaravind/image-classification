@@ -16,3 +16,7 @@ Host the app using any static web server or open it from [here](https://image-cl
 Store the sate of the classification and restore it back
 
 ## Note: No image is sent back to any server and all data are processed within the device
+
+#### References:
+
+https://www.tensorflow.org/js/tutorials/transfer/image_classification
