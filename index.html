@@ -1,0 +1,135 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#00000" />
+    <!-- Load the latest version of TensorFlow.js -->
+    <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+    <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
+    <script src="https://unpkg.com/@tensorflow-models/knn-classifier"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        background: #000000;
+        color: white;
+        font-family: "Open Sans", sans-serif;
+        display: flex;
+        flex-direction: column;
+      }
+      header {
+        height: 50px;
+        font-size: xx-large;
+        text-align: center;
+        border-bottom: thin solid;
+      }
+      footer {
+        font-size: small;
+        padding: 5px;
+        position: fixed;
+        bottom: 0;
+        left: 33%;
+      }
+
+      #cam {
+        width: 100%;
+        width: 100%;
+        border: thick solid #8bc34a;
+        box-sizing: border-box;
+      }
+
+      #loader {
+        text-align: center;
+        margin: auto auto;
+      }
+
+      #content,
+      .ready #loader {
+        display: none;
+      }
+
+      .ready #content {
+        display: block;
+      }
+
+      #totalClasses {
+        margin-left: 5px;
+      }
+
+      .toolbox {
+        background: #3d3d3dcf;
+        padding: 2px;
+        text-align: center;
+      }
+
+      .btn {
+        border: none;
+        color: white;
+        padding: 8px;
+        border-radius: 5px;
+      }
+
+      .btn:hover {
+        opacity: 0.8;
+      }
+
+      #add {
+        background: #4caf50;
+      }
+
+      #reset {
+        background: #e91e63;
+      }
+
+      #class {
+        padding: 7px;
+        border: none;
+        border-radius: 4px;
+        background: #8bc34a;
+        color: white;
+      }
+
+      p {
+        font-size: x-small;
+      }
+
+      #console {
+        position: absolute;
+        background: #00000047;
+        margin: 5px;
+        padding: 5px;
+        font-family: monospace;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>Image Classifier</header>
+    <div id="loader">Loading...</div>
+
+    <main id="content">
+      <div>
+        <div class="toolbox">
+          <span>Available Classifications</span><span id="totalClasses">0</span>
+          <button id="reset" class="btn">Reset</button>
+        </div>
+        <div class="toolbox">
+          <button id="add" class="btn">Classify current image</button>
+        </div>
+      </div>
+      <div id="console"></div>
+      <video id="cam" autoplay playsinline muted></video>
+    </main>
+
+    <footer>© Aravind Mohan 2019</footer>
+
+    <!-- <script type="module">
+      import { set, get, clear } from "https://unpkg.com/idb-keyval?module";
+      window.db = { set, get, clear };
+    </script> -->
+
+    <script src="index.js"></script>
+  </body>
+</html>
