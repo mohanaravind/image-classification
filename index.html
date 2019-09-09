@@ -103,6 +103,57 @@
         font-family: monospace;
         border-radius: 5px;
       }
+
+      #prompt {
+        z-index: 1;
+        height: 80px;
+        width: 200px;
+        position: absolute;
+        left: 50%;
+        margin-left: -100px;
+        top: 50%;
+        margin-top: -40px;
+        padding: 10px;
+        background: #0000005c;
+        border-radius: 15px;
+        display: none;
+      }
+
+      #overlay {
+        position: absolute;
+        background: #b7b7b773;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: none;
+      }
+
+      .promptBtns {
+        margin: 5px 5px;
+        text-align: right;
+      }
+
+      #promptOk {
+        background: #4caf50;
+      }
+
+      #promptCancel {
+        margin-left: 5px;
+        background: #e91e63;
+      }
+
+      #classId {
+        width: 100%;
+        padding: 5px;
+        border-radius: 4px;
+        border: none;
+      }
+
+      .prompt-open #prompt,
+      .prompt-open #overlay {
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -120,6 +171,15 @@
         </div>
       </div>
       <div id="console"></div>
+      <div id="prompt">
+        <label>Classify as:</label>
+        <input id="classId" />
+        <div class="promptBtns">
+          <button id="promptOk" class="btn">Save</button
+          ><button id="promptCancel" class="btn">Cancel</button>
+        </div>
+      </div>
+      <div id="overlay"></div>
       <video id="cam" autoplay playsinline muted></video>
     </main>
 

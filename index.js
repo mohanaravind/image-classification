@@ -32,8 +32,7 @@ const loadClassifier = async classifier => {
 };
 
 let net,
-  classes = [],
-  lastClassified;
+  classes = [];
 
 const classifier = knnClassifier.create();
 const webcamElement = document.getElementById("cam");
@@ -90,9 +89,7 @@ async function app() {
   };
 
   // adds the current image as a new class
-  $("add").addEventListener("click", () => {
-    const classId = prompt("Classify as", lastClassified).trim();
-
+  const classify = classId => {
     // if no class id is given
     if (!classId) {
       return;
@@ -100,14 +97,25 @@ async function app() {
 
     // if its a new class
     classes.indexOf(classId) === -1 && classes.push(classId);
-    lastClassified = classId;
-
     addClass(classId);
+  };
+
+  const hidePrompt = () => $("content").classList.remove("prompt-open");
+  const showPrompt = () => $("content").classList.add("prompt-open");
+
+  $("promptCancel").addEventListener("click", hidePrompt);
+  $("promptOk").addEventListener("click", () => {
+    const classId = $("classId").value.trim();
+    hidePrompt();
+    classify(classId);
   });
+
+  $("add").addEventListener("click", showPrompt);
 
   // clear the classifier
   $("reset").addEventListener("click", () => {
     classifier.clearAllClasses();
+    $("classId").value = "";
     // window.db.clear();
   });
 
